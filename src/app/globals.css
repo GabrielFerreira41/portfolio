@@ -1,26 +1,41 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* UdeM palette */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --udem-blue: #0057AC;
+  --udem-navy: #0B113A;
+  --udem-mist: rgba(0, 87, 172, 0.10);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  /* Wallpaper (place the image in /public as udem-wallpaper.jpg) */
+  background-image: url("/backgroundudem.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--udem-navy);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* White overlay for readability */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
+
+::selection {
+  background: rgba(0, 87, 172, 0.20);
 }
