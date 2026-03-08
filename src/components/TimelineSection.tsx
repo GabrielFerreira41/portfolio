@@ -53,7 +53,7 @@ export default function TimelineSection({
               <span className="absolute -start-1.5 mt-3 h-3 w-3 rounded-full border border-udem-blue/40 bg-white/90 shadow-[0_4px_10px_rgba(11,17,58,0.10)]" />
 
               <div className="rounded-xl border border-udem-blue/15 bg-white/85 p-4 shadow-[0_8px_18px_rgba(11,17,58,0.08)] transition hover:border-udem-blue/35 hover:shadow-[0_10px_22px_rgba(11,17,58,0.10)]">
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-start gap-3 min-w-0">
                     {item.icon ? (
                       <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-udem-blue/15 bg-udem-mist text-sm">
@@ -62,7 +62,7 @@ export default function TimelineSection({
                     ) : null}
 
                     <div className="min-w-0">
-                      <div className="flex flex-wrap items-baseline gap-x-2">
+                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
                         <p className="text-sm font-semibold text-udem-navy">{item.title}</p>
                         {item.meta ? (
                           <p className="text-xs text-udem-navy/55">{item.meta}</p>
@@ -79,13 +79,13 @@ export default function TimelineSection({
                   </div>
 
                   {item.logoSrc ? (
-                    <div className="shrink-0 self-center flex h-12 w-40 items-center justify-center rounded-xl border border-udem-blue/15 bg-white/90 px-3 py-2 shadow-[0_6px_16px_rgba(11,17,58,0.06)]">
+                    <div className="shrink-0 flex h-11 w-full items-center justify-center rounded-xl border border-udem-blue/15 bg-white/90 px-3 py-2 shadow-[0_6px_16px_rgba(11,17,58,0.06)] sm:w-40">
                       <Image
                         src={item.logoSrc}
                         alt={`${item.title} logo`}
                         width={160}
                         height={48}
-                        className="max-h-8 w-auto max-w-full object-contain opacity-100"
+                        className="max-h-7 w-auto max-w-full object-contain opacity-100 sm:max-h-8"
                       />
                     </div>
                   ) : null}
