@@ -258,7 +258,7 @@ function DesktopCurve({ items, hovered, setHovered }: {
                     fill="#2563eb" fillOpacity={isHov ? 0.68 : 0.22}/>
 
                   <foreignObject x={cardX} y={cardY+3} width={CW} height={CH-3}>
-                    <div xmlns="http://www.w3.org/1999/xhtml" style={{
+                    <div style={{
                       width: "100%", height: "100%",
                       display: "flex", flexDirection: "column",
                       alignItems: "center", justifyContent: "center",
