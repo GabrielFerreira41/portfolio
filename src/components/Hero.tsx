@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { profile } from "@/data/profile";
 
+
 export default function Hero() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-14">
@@ -80,19 +81,38 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Liens */}
-              <div className="flex flex-wrap gap-4 text-sm">
-                {profile.links.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    className="text-udem-blue underline-offset-4 hover:underline"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {l.label}
-                  </a>
-                ))}
+              {/* Contact */}
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={`mailto:${profile.contact.email}`}
+                  className="inline-flex items-center justify-center rounded-xl border border-udem-blue/20 bg-white/85 px-3 py-2 text-sm font-medium text-udem-blue backdrop-blur hover:bg-udem-mist hover:border-udem-blue/35"
+                >
+                  ✉️ {profile.contact.email}
+                </a>
+
+                <a
+                  href={`tel:${profile.contact.phone}`}
+                  className="inline-flex items-center justify-center rounded-xl border border-udem-blue/20 bg-white/85 px-3 py-2 text-sm font-medium text-udem-blue backdrop-blur hover:bg-udem-mist hover:border-udem-blue/35"
+                >
+                  📞 {profile.contact.phone}
+                </a>
+
+                {profile.links
+                  .filter((l) => {
+                    const v = l.label.toLowerCase();
+                    return v.includes("linkedin") || v.includes("github");
+                  })
+                  .map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      className="inline-flex items-center justify-center rounded-xl border border-udem-blue/20 bg-white/85 px-3 py-2 text-sm font-medium text-udem-blue backdrop-blur hover:bg-udem-mist hover:border-udem-blue/35"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {l.label}
+                    </a>
+                  ))}
               </div>
             </div>
           </div>

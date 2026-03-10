@@ -39,3 +39,22 @@ body::before {
 ::selection {
   background: rgba(0, 87, 172, 0.20);
 }
+
+/* Marquee (Projets récents) */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  will-change: transform;
+  animation: marquee 24s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}

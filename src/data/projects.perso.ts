@@ -23,4 +23,15 @@ export const projectsPerso: Project[] = [
     impact: "Dashboard F1 lisible et pro : filtres, interactions, pages thématiques et storytelling.",
     links: [{ label: "Démo", href: "https://" }],
   },
+  {
+    slug: "hackathon-mila-sante-mentale",
+    title: "Hackathon Mila — IA & santé mentale",
+    subtitle: "Prototype d’IA conversationnelle plus sûre pour la santé mentale des jeunes.",
+    description:
+      "Participation au hackathon Mila : cadrage du problème, prototypage, itérations rapides et travail en équipe multidisciplinaire.",
+    tags: ["Hackathon", "Mila", "AI Safety", "NLP", "Prototype"],
+    year: "2026",
+    impact: "Prototype + apprentissages sur sécurité/fiabilité, UX et collaboration.",
+    links: [{ label: "Résumé", href: "#" }],
+  },
 ];

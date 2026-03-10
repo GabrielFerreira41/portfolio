@@ -12,7 +12,6 @@ export const profile = {
     ctas: [
       { label: "Voir mes projets", href: "/projets-universitaires" },
       { label: "Télécharger mon CV", href: "/cv.pdf" },
-      { label: "Me contacter", href: "mailto:gabriel.ferreira@umontreal.ca" },
     ],
     links: [
       // Mets tes vrais liens ici (GitHub/LinkedIn)

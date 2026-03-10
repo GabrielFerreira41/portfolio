@@ -11,32 +11,74 @@ export default function HomePage() {
       {/* Proof cards (recruteur) */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <div className="rounded-3xl border border-udem-blue/15 bg-white/85 backdrop-blur-md p-6 shadow-[0_12px_34px_rgba(11,17,58,0.14)] md:p-8">
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-udem-blue/15 bg-white/90 p-5 shadow-[0_10px_24px_rgba(11,17,58,0.10)]">
-              <p className="text-sm text-udem-navy/60">Objectif</p>
-              <p className="mt-2 text-udem-navy">
-                {profile.title}
-                <span className="block text-udem-navy/60">{profile.location}</span>
+          <div className="flex items-start justify-between gap-6">
+            <div>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight">Projets récents</h2>
+              <p className="mt-1 text-sm text-udem-navy/60">
+                Un aperçu rapide — clique sur un projet pour voir la section correspondante.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-udem-blue/15 bg-white/90 p-5 shadow-[0_10px_24px_rgba(11,17,58,0.10)]">
-              <p className="text-sm text-udem-navy/60">Contact</p>
-              <div className="mt-2 space-y-1 text-udem-navy">
-                <p>{profile.contact.email}</p>
-                <p>{profile.contact.phone}</p>
-                <p className="text-udem-navy/60">{profile.contact.address}</p>
+            <div className="hidden sm:flex items-center gap-2 rounded-2xl border border-udem-blue/15 bg-white/80 px-4 py-3 shadow-[0_10px_24px_rgba(11,17,58,0.08)]">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-udem-blue/15 bg-udem-mist text-lg">✨</span>
+              <div className="leading-tight">
+                <p className="text-sm font-semibold text-udem-navy">Dernières mises à jour</p>
+                <p className="text-xs text-udem-navy/60">résultats • dashboards • NLP</p>
               </div>
             </div>
+          </div>
 
-            <div className="rounded-2xl border border-udem-blue/15 bg-white/90 p-5 shadow-[0_10px_24px_rgba(11,17,58,0.10)]">
-              <p className="text-sm text-udem-navy/60">Highlights</p>
-              <p className="mt-2 text-udem-navy">{profile.highlights[0]?.label}</p>
-              <p className="mt-1 text-sm text-udem-navy/60 line-clamp-3">
-                {profile.highlights[0]?.value}
-              </p>
+          {/* Marquee */}
+          <div className="marquee mt-6 overflow-hidden rounded-2xl border border-udem-blue/15 bg-white/70 backdrop-blur-md shadow-[0_10px_24px_rgba(11,17,58,0.08)]">
+            <div className="marquee-track flex w-max items-center gap-6 px-6 py-5">
+              {[
+                { title: "NHL", src: "/logos/NHLlogo.png", href: "/projets-universitaires" },
+                { title: "NLP / IE", src: "/stacks/spacy.webp", href: "/projets-universitaires" },
+                { title: "Looker Studio (F1)", src: "/logos/F1logo.png", href: "/projets-personnels" },
+                { title: "Hugging Face", src: "/stacks/huggingface.png", href: "/projets-universitaires" },
+                { title: "Hackathon", src: "/logos/Milalogo.svg", href: "/projets-personnels" },
+              ].map((p) => (
+                <a
+                  key={p.title}
+                  href={p.href}
+                  className="group inline-flex items-center gap-3 rounded-2xl border border-udem-blue/15 bg-white/85 px-4 py-3 shadow-[0_6px_16px_rgba(11,17,58,0.06)] hover:border-udem-blue/35"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-udem-blue/15 bg-white">
+                    <img src={p.src} alt="" className="h-7 w-7 object-contain" />
+                  </span>
+                  <span className="text-sm font-medium text-udem-navy/80 group-hover:text-udem-navy">
+                    {p.title}
+                  </span>
+                </a>
+              ))}
+
+              {/* Duplicate for seamless loop */}
+              {[
+                { title: "NHL", src: "/logos/NHLlogo.png", href: "/projets-universitaires" },
+                { title: "NLP / IE", src: "/stacks/spacy.webp", href: "/projets-universitaires" },
+                { title: "Looker Studio (F1)", src: "/logos/F1logo.png", href: "/projets-personnels" },
+                { title: "Hugging Face", src: "/stacks/huggingface.png", href: "/projets-universitaires" },
+                { title: "Hackathon", src: "/logos/Milalogo.svg", href: "/projets-personnels" },
+              ].map((p) => (
+                <a
+                  key={`${p.title}-dup`}
+                  href={p.href}
+                  className="group inline-flex items-center gap-3 rounded-2xl border border-udem-blue/15 bg-white/85 px-4 py-3 shadow-[0_6px_16px_rgba(11,17,58,0.06)] hover:border-udem-blue/35"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-udem-blue/15 bg-white">
+                    <img src={p.src} alt="" className="h-7 w-7 object-contain" />
+                  </span>
+                  <span className="text-sm font-medium text-udem-navy/80 group-hover:text-udem-navy">
+                    {p.title}
+                  </span>
+                </a>
+              ))}
             </div>
           </div>
+
+          <p className="mt-3 text-xs text-udem-navy/55">
+            Astuce : survole pour mettre en pause le défilement.
+          </p>
         </div>
 
         <div className="mt-6 rounded-3xl border border-udem-blue/15 bg-white/85 backdrop-blur-md p-6 shadow-[0_12px_34px_rgba(11,17,58,0.14)] md:p-8">
@@ -161,7 +203,7 @@ export default function HomePage() {
           </div>
 
           {/* CTA footer */}
-          <div className="mt-10 rounded-2xl border border-udem-blue/15 bg-white/90 p-6 shadow-[0_10px_24px_rgba(11,17,58,0.10)]">
+          <div id="contact" className="mt-10 rounded-2xl border border-udem-blue/15 bg-white/90 p-6 shadow-[0_10px_24px_rgba(11,17,58,0.10)]">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
               <div>
                 <p className="text-sm text-udem-navy/60">Disponibilité</p>
