@@ -36,37 +36,49 @@ export const profile = {
       },
     ],
     timeline: [
-      {
-        title: "Université de Montréal",
-        subtitle: "Maîtrise Informatique (IA)",
-        meta: "2025–2026",
-        logoSrc: "/logos/udem.png",
-      },
-      {
-        title: "Université d’Orléans",
-        subtitle: "Bachelor Universitaire et Technologique Informatique",
-        meta: "2022–2024",
-        logoSrc: "/logos/orleans.jpg",
-      },
-      {
-        title: "Startup Weekend",
-        subtitle: "Création de startup (54h)",
-        meta: "2023",
-        logoSrc: "/logos/techstars.png",
-      },
-      {
-        title: "Lycée Augustin Thierry",
-        subtitle:
-          "Sciences et Technologies de l'Industrie et du Développement Durable",
-        meta: "2019–2022",
-        logoSrc: "/logos/augustin-thierry.jpg",
-      },
-      {
-        title: "BIA",
-        subtitle: "Brevet d’initiation aéronautique",
-        meta: "2020",
-      },
-    ],
+        {
+          title: "Collège Notre Dame",
+          subtitle: "Certification Cambridge d'anglais",
+          meta: "2016",
+          logoSrc: "/logos/notre-dame.png",
+        },
+        {
+          title: "BIA",
+          subtitle: "Brevet d'initiation aéronautique",
+          meta: "2019",
+          logoSrc: "/logos/aerodrome.png",
+        },
+        {
+          title: "Lycée Augustin Thierry",
+          subtitle: "Sciences et Technologies de l'Industrie et du Développement Durable",
+          meta: "2019–2022",
+          logoSrc: "/logos/augustin-thierry.jpg",
+        },
+        {
+          title: "Atempo",
+          subtitle: "Apprentissage Développeur Logiciel",
+          meta: "2022–2024",
+          logoSrc: "/logos/atempo.png",
+        },
+        {
+          title: "Startup Weekend",
+          subtitle: "Création de startup (54h)",
+          meta: "2022–2023",
+          logoSrc: "/logos/techstars.png",
+        },
+        {
+          title: "Université d'Orléans",
+          subtitle: "Bachelor Universitaire et Technologique Informatique",
+          meta: "2021–2024",
+          logoSrc: "/logos/orleans.jpg",
+        },
+        {
+          title: "Université de Montréal",
+          subtitle: "Maîtrise Informatique (IA)",
+          meta: "2025–2026",
+          logoSrc: "/logos/udem.png",
+        },
+      ],
     stack: [
       { name: "Python", logoSrc: "/stacks/Python.png" },
       { name: "PyTorch", logoSrc: "/stacks/Pytorch.png" },
