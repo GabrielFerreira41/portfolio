@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
+import ChatWidget from "@/components/ChatWidget";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-  className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white text-udem-navy`}
-  >
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white text-udem-navy`}
+      >
         <header className="sticky top-0 z-50">
           <div className="border-b border-udem-blue/10 bg-white/65 backdrop-blur-md">
             <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
@@ -98,6 +99,7 @@ export default function RootLayout({
 
         {children}
         <Analytics />
+        <ChatWidget />
 
       </body>
     </html>
