@@ -32,6 +32,7 @@ export default function HomePage() {
           <div className="marquee mt-6 overflow-hidden rounded-2xl border border-udem-blue/15 bg-white/70 backdrop-blur-md shadow-[0_10px_24px_rgba(11,17,58,0.08)]">
             <div className="marquee-track flex w-max items-center gap-6 px-6 py-5">
               {[
+                { title: "AirI", src: "/stacks/nextjs.png", href: "/projets-personnels/airl" },
                 { title: "NHL", src: "/logos/NHLlogo.png", href: "/projets-universitaires" },
                 { title: "NLP / IE", src: "/stacks/spacy.webp", href: "/projets-universitaires" },
                 { title: "Looker Studio (F1)", src: "/logos/F1logo.png", href: "/projets-personnels" },
@@ -54,6 +55,7 @@ export default function HomePage() {
 
               {/* Duplicate for seamless loop */}
               {[
+                { title: "AirI", src: "/stacks/nextjs.png", href: "/projets-personnels/airl" },
                 { title: "NHL", src: "/logos/NHLlogo.png", href: "/projets-universitaires" },
                 { title: "NLP / IE", src: "/stacks/spacy.webp", href: "/projets-universitaires" },
                 { title: "Looker Studio (F1)", src: "/logos/F1logo.png", href: "/projets-personnels" },
