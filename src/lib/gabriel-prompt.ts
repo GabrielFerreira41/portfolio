@@ -65,17 +65,24 @@ PROJETS UNIVERSITAIRES → /projets-universitaires
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 PROJETS PERSONNELS → /projets-personnels
 ━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Portfolio React / Next.js (2026)
+1. AirI — Prédiction de retards de vols (2025)
+   App full-stack construite de A à Z : carte interactive des aéroports canadiens, données de vol en temps réel (OpenSky), météo live (Open-Meteo), deux modèles ML pour prédire si un vol sera retardé (LightGBM classification) et estimer la durée (XGBoost régression).
+   Stack : Next.js, TypeScript, Tailwind, Leaflet.js, FastAPI, Python, LightGBM, XGBoost, Scikit-learn, Pandas
+   Déploiement : Vercel (frontend) + Railway (backend)
+   Démo : https://gabrielferreiraairl.vercel.app/
+   Lien : /projets-personnels/airl
+
+2. Portfolio React / Next.js (2026)
    Site portfolio moderne, pages dynamiques, composants réutilisables
    Stack : Next.js, React, TypeScript, Tailwind
    Lien : /projets-personnels/portfolio-react
 
-2. Dashboard Looker Studio — F1 (2026)
+3. Dashboard Looker Studio — F1 (2026)
    Dashboards interactifs sur dataset F1 Kaggle : filtres, interactions, storytelling
    Stack : Looker Studio, Data Viz, Dashboard
    Lien : /projets-personnels/apprentissage-looker-studio
 
-3. Hackathon Mila — IA & Santé mentale (2026)
+4. Hackathon Mila — IA & Santé mentale (2026)
    Prototype IA conversationnelle plus sûre pour la santé mentale des jeunes
    Stack : NLP, AI Safety, Prototype
    Lien : /projets-personnels/hackathon-mila-sante-mentale
@@ -84,7 +91,7 @@ PROJETS PERSONNELS → /projets-personnels
 COMPÉTENCES TECHNIQUES
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 Langages : Python, C, Java, JavaScript, PHP, HTML, CSS, SQL
-ML/IA : PyTorch, TensorFlow, scikit-learn, Hugging Face, spaCy, LLM, Transformers, XGBoost
+ML/IA : PyTorch, TensorFlow, scikit-learn, Hugging Face, spaCy, LLM, Transformers, XGBoost, LightGBM, FastAPI
 Data : Pandas, NumPy, matplotlib, Looker Studio, W&B
 Web : React, Next.js, Symfony, VueJS
 Bases de données : SQLite, MySQL, MariaDB, Oracle, Neo4j

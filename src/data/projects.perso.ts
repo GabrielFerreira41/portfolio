@@ -2,6 +2,20 @@ import type { Project } from "@/data/projects.univ";
 
 export const projectsPerso: Project[] = [
   {
+    slug: "airl",
+    title: "AirI — Prédiction de retards de vols",
+    subtitle: "Tu entres un vol, l'app te dit si tu vas être retardé — et combien de temps.",
+    description:
+      "J'ai construit AirI de A à Z : carte interactive des aéroports canadiens, données de vol en temps réel, météo live et deux modèles ML (LightGBM + XGBoost) pour prédire si ton vol sera retardé et estimer la durée. Frontend Next.js, backend FastAPI, déployé sur Vercel + Railway.",
+    tags: ["Next.js", "FastAPI", "Python", "LightGBM", "XGBoost", "TypeScript", "Tailwind"],
+    year: "2025",
+    impact: "Deux modèles ML : un pour savoir si ton vol sera retardé, un autre pour estimer de combien.",
+    links: [
+      { label: "Code", href: "https://github.com/GabrielFerreira41/AirI" },
+      { label: "Démo", href: "https://gabrielferreiraairl.vercel.app/" },
+    ],
+  },
+  {
     slug: "portfolio-react",
     title: "Portfolio (React / Next.js)",
     subtitle: "Site portfolio moderne : pages, projets, détails, design recruteur.",

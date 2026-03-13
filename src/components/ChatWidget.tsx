@@ -37,7 +37,7 @@ function renderMessage(text: string) {
 
 const SUGGESTIONS = [
   "Quels sont tes projets ML ?",
-  "What's your tech stack?",
+  "C'est quoi AirI ?",
   "Tu cherches un stage ?",
   "Tell me about the NHL project",
 ];
