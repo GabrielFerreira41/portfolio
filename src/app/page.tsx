@@ -37,7 +37,7 @@ export default function HomePage() {
                 { title: "NLP / IE", src: "/stacks/spacy.webp", href: "/projets-universitaires" },
                 { title: "Looker Studio (F1)", src: "/logos/F1logo.png", href: "/projets-personnels" },
                 { title: "Hugging Face", src: "/stacks/huggingface.png", href: "/projets-universitaires" },
-                { title: "Hackathon", src: "/logos/Milalogo.svg", href: "/projets-personnels" },
+                { title: "Hackathon Mila", src: "/logos/mila-wordmark.svg", href: "/projets-personnels/hackathon-mila-sante-mentale" },
               ].map((p) => (
                 <a
                   key={p.title}
@@ -60,7 +60,7 @@ export default function HomePage() {
                 { title: "NLP / IE", src: "/stacks/spacy.webp", href: "/projets-universitaires" },
                 { title: "Looker Studio (F1)", src: "/logos/F1logo.png", href: "/projets-personnels" },
                 { title: "Hugging Face", src: "/stacks/huggingface.png", href: "/projets-universitaires" },
-                { title: "Hackathon", src: "/logos/Milalogo.svg", href: "/projets-personnels" },
+                { title: "Hackathon Mila", src: "/logos/mila-wordmark.svg", href: "/projets-personnels/hackathon-mila-sante-mentale" },
               ].map((p) => (
                 <a
                   key={`${p.title}-dup`}

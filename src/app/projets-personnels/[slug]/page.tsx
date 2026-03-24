@@ -182,14 +182,22 @@ export default function ProjetPersoDetailPage({
   const sectionIcons = ["🎯", "🗄️", "🤖", "🏗️", "✅"];
   const sectionAccents = ["#1a56db", "#0891b2", "#7c3aed", "#16a34a", "#d97706"];
 
-  const liveUrl = project.links?.find((l) => l.label === "Démo")?.href
-    ?? "https://gabrielferreiraairl.vercel.app/";
+  const liveUrl = project.links?.find((l) => l.label === "Démo")?.href;
+  const hasLiveDemo = !!liveUrl && liveUrl !== "#";
+
+  const badgeConfig: Record<string, { icon: string; name: string; sub: string }> = {
+    airl: { icon: "✈️", name: "AirI", sub: "ML · Full-stack" },
+    "hackathon-mila-sante-mentale": { icon: "🧠", name: "KHP Guardrail", sub: "AI Safety · NLP" },
+    "portfolio-react": { icon: "💼", name: "Portfolio", sub: "Next.js · Design" },
+    "apprentissage-looker-studio": { icon: "📊", name: "Looker Studio", sub: "Data Viz" },
+  };
+  const badge = badgeConfig[slug];
 
   return (
     <main className="min-h-screen bg-transparent text-udem-navy">
       <section className="mx-auto max-w-4xl px-4 py-12">
 
-        {/* ── Back + Header ── */}
+        {/* 1 ── Header ───────────────────────────────────────────── */}
         <div
           ref={headerRef}
           className="rounded-3xl border border-udem-blue/15 bg-white/85 backdrop-blur-md p-6 shadow-[0_12px_34px_rgba(11,17,58,0.14)] md:p-8"
@@ -199,7 +207,6 @@ export default function ProjetPersoDetailPage({
             transition: "opacity 0.5s ease, transform 0.5s ease",
           }}
         >
-          {/* Back */}
           <button
             onClick={() => router.back()}
             className="mb-4 inline-flex items-center gap-1.5 text-sm text-udem-navy/55 hover:text-udem-navy transition-colors"
@@ -212,30 +219,24 @@ export default function ProjetPersoDetailPage({
 
           <div className="flex items-start justify-between gap-6">
             <div>
-              <p className="text-sm text-udem-navy/55">Projet personnel</p>
+              <p className="text-sm text-udem-navy/55">Projet personnel · {project.year}</p>
               <h1 className="mt-1 text-3xl font-semibold tracking-tight">{project.title}</h1>
               <p className="mt-2 max-w-xl text-udem-navy/70">{project.subtitle}</p>
             </div>
-
-            {/* Badge */}
-            <div className="hidden sm:flex shrink-0 items-center gap-2 rounded-2xl border border-udem-blue/15 bg-white/80 px-4 py-3 shadow-[0_10px_24px_rgba(11,17,58,0.08)]">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-udem-blue/15 bg-udem-mist text-lg">
-                ✈️
-              </span>
-              <div className="leading-tight">
-                <p className="text-sm font-semibold text-udem-navy">AirI</p>
-                <p className="text-xs text-udem-navy/55">ML · Full-stack</p>
+            {badge && (
+              <div className="hidden sm:flex shrink-0 items-center gap-2 rounded-2xl border border-udem-blue/15 bg-white/80 px-4 py-3 shadow-[0_10px_24px_rgba(11,17,58,0.08)]">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-udem-blue/15 bg-udem-mist text-lg">
+                  {badge.icon}
+                </span>
+                <div className="leading-tight">
+                  <p className="text-sm font-semibold text-udem-navy">{badge.name}</p>
+                  <p className="text-xs text-udem-navy/55">{badge.sub}</p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
-          {/* Tags + year */}
-          <div className="mt-5 flex flex-wrap items-center gap-2">
-            {project.year && (
-              <span className="rounded-full border border-udem-blue/20 bg-udem-mist px-3 py-1 text-xs font-medium text-udem-navy/70">
-                {project.year}
-              </span>
-            )}
+          <div className="mt-4 flex flex-wrap items-center gap-2">
             {project.tags.map((t) => (
               <span key={t} className="rounded-full border border-udem-blue/15 bg-udem-mist px-3 py-1 text-xs text-udem-navy/70">
                 {t}
@@ -244,7 +245,27 @@ export default function ProjetPersoDetailPage({
           </div>
         </div>
 
-        {/* ── TL;DR ── */}
+        {/* 2 ── Photo de couverture ──────────────────────────────── */}
+        {detail.coverImage && (
+          <div
+            className="mt-4 overflow-hidden rounded-2xl border border-udem-blue/15 shadow-[0_12px_32px_rgba(11,17,58,0.12)]"
+            style={{
+              opacity: headerIn ? 1 : 0,
+              transition: "opacity 0.6s ease 80ms",
+            }}
+          >
+            <Image
+              src={detail.coverImage}
+              alt={project.title}
+              width={896}
+              height={420}
+              className="w-full object-cover"
+              style={{ maxHeight: "380px" }}
+            />
+          </div>
+        )}
+
+        {/* 3 ── TL;DR ───────────────────────────────────────────── */}
         <div
           className="mt-4 rounded-2xl border border-udem-blue/15 bg-white/85 backdrop-blur-md p-6 shadow-[0_10px_24px_rgba(11,17,58,0.08)]"
           style={{
@@ -257,7 +278,7 @@ export default function ProjetPersoDetailPage({
           <p className="mt-2 text-udem-navy/75 leading-relaxed">{detail.tl_dr}</p>
         </div>
 
-        {/* ── Impact ── */}
+        {/* 4 ── Résultat clé ────────────────────────────────────── */}
         {project.impact && (
           <div
             className="mt-4 rounded-2xl border border-udem-blue/20 bg-gradient-to-br from-udem-blue/8 to-transparent backdrop-blur-md p-6 shadow-[0_10px_24px_rgba(11,17,58,0.08)]"
@@ -272,13 +293,32 @@ export default function ProjetPersoDetailPage({
           </div>
         )}
 
-        {/* ── Live demo embed ── */}
-        <div className="mt-8">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-udem-navy/45">Demo live</p>
-          <BrowserEmbed url={liveUrl} title={project.title} />
-        </div>
+        {/* 5 ── Partenaires ─────────────────────────────────────── */}
+        {detail.partners?.length && (
+          <div className="mt-4 rounded-2xl border border-udem-blue/15 bg-white/85 backdrop-blur-md p-6 shadow-[0_10px_24px_rgba(11,17,58,0.08)]">
+            <p className="text-xs font-semibold uppercase tracking-widest text-udem-navy/45 mb-5">Organisé par</p>
+            <div className="flex flex-wrap items-center gap-4">
+              {detail.partners.map((p) => (
+                <div
+                  key={p.name}
+                  title={p.name}
+                  className="flex items-center justify-center rounded-xl border border-udem-blue/10 bg-white px-5 py-3 shadow-[0_4px_12px_rgba(11,17,58,0.06)] hover:border-udem-blue/25 hover:shadow-[0_6px_18px_rgba(11,17,58,0.10)] transition-all duration-200"
+                  style={{ minWidth: 110, minHeight: 52 }}
+                >
+                  <Image
+                    src={p.logoSrc}
+                    alt={p.name}
+                    width={130}
+                    height={44}
+                    className="h-9 w-auto object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-        {/* ── Sections ── */}
+        {/* 6 ── Détails (sections) ──────────────────────────────── */}
         <div className="mt-10">
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-udem-navy/45">Détails du projet</p>
           <div className="grid gap-4 md:grid-cols-2">
@@ -303,7 +343,7 @@ export default function ProjetPersoDetailPage({
           </div>
         </div>
 
-        {/* ── Stack logos ── */}
+        {/* 7 ── Stack technologies ──────────────────────────────── */}
         <div className="mt-10 space-y-5">
           <p className="text-xs font-semibold uppercase tracking-widest text-udem-navy/45">Technologies</p>
           <TechCluster title="Stack développement" items={detail.devStack} variant="wrap" />
@@ -311,31 +351,56 @@ export default function ProjetPersoDetailPage({
           <TechCluster title="Déploiement" items={detail.deployStack} variant="wrap" />
         </div>
 
-        {/* ── Liens ── */}
-        {project.links?.length ? (
+        {/* 8 ── Démo live ───────────────────────────────────────── */}
+        {hasLiveDemo && (
+          <div className="mt-10">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-udem-navy/45">Demo live</p>
+            <BrowserEmbed url={liveUrl!} title={project.title} />
+          </div>
+        )}
+
+        {/* 9 ── Liens ───────────────────────────────────────────── */}
+        {project.links?.filter((l) => l.href !== "#").length ? (
           <div className="mt-8 rounded-2xl border border-udem-blue/15 bg-white/85 backdrop-blur-md p-6 shadow-[0_10px_24px_rgba(11,17,58,0.08)]">
             <p className="text-xs font-semibold uppercase tracking-widest text-udem-navy/45 mb-4">Liens</p>
             <div className="flex flex-wrap gap-3">
-              {project.links.map((l) => (
+              {project.links.filter((l) => l.href !== "#").map((l) => {
+                const isPdf = l.label === "Rapport PDF";
+                return (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    {...(isPdf
+                      ? { download: "Hackathon_Mila_Rapport.pdf" }
+                      : { target: "_blank", rel: "noreferrer" }
+                    )}
+                    className="inline-flex items-center gap-2 rounded-xl border border-udem-blue/20 bg-udem-mist px-5 py-2.5 text-sm font-medium text-udem-blue hover:bg-udem-blue hover:text-white hover:border-udem-blue transition-all duration-200 shadow-[0_6px_16px_rgba(11,17,58,0.06)]"
+                  >
+                    {l.label === "Code" && (
+                      <Image src="/stacks/Github.png" alt="GitHub" width={16} height={16} className="h-4 w-4 object-contain" />
+                    )}
+                    {isPdf && (
+                      <svg className="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="12" y1="18" x2="12" y2="12" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                      </svg>
+                    )}
+                    {l.label}
+                  </a>
+                );
+              })}
+              {hasLiveDemo && (
                 <a
-                  key={l.href}
-                  href={l.href}
+                  href={liveUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-udem-blue/20 bg-udem-mist px-5 py-2.5 text-sm font-medium text-udem-blue hover:bg-udem-blue hover:text-white hover:border-udem-blue transition-all duration-200 shadow-[0_6px_16px_rgba(11,17,58,0.06)]"
+                  className="inline-flex items-center gap-2 rounded-xl border border-udem-blue bg-udem-blue px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-all duration-200 shadow-[0_6px_16px_rgba(26,86,219,0.25)]"
                 >
-                  <Image src="/stacks/Github.png" alt="GitHub" width={16} height={16} className="h-4 w-4 object-contain" />
-                  {l.label}
+                  {badge?.icon} Voir la démo live
                 </a>
-              ))}
-              <a
-                href={liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-udem-blue bg-udem-blue px-5 py-2.5 text-sm font-medium text-white hover:opacity-90 transition-all duration-200 shadow-[0_6px_16px_rgba(26,86,219,0.25)]"
-              >
-                ✈️ Voir la démo live
-              </a>
+              )}
             </div>
           </div>
         ) : null}

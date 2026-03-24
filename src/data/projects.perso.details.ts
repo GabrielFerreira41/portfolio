@@ -6,9 +6,95 @@ export type PersoProjectDetail = {
   devStack: TechItem[];
   mlStack: TechItem[];
   deployStack: TechItem[];
+  coverImage?: string;
+  partners?: { name: string; logoSrc: string }[];
 };
 
 export const projectsPersoDetails: Record<string, PersoProjectDetail> = {
+  "hackathon-mila-sante-mentale": {
+    tl_dr:
+      "Dans ce hackathon Mila autour de Kids Help Phone (KHP), mon équipe et moi avons construit un guardrail d'entrée pour détecter les messages à haut risque dans un chatbot de soutien en santé mentale pour les jeunes. On a red-teamé le chatbot existant, généré 6 037 conversations synthétiques bilingues, et comparé trois architectures. Solution finale : un LLM-as-a-Judge (Cohere) avec prompt optimisé et seuil calibré — F1 : 0.908.",
+
+    sections: [
+      {
+        title: "Le problème",
+        bullets: [
+          "KHP (Kids Help Phone) est une ligne d'aide 24/7 pour les jeunes au Canada. Leur chatbot IA ratait des signaux de détresse subtils — souvent exprimés par métaphore, humour ou escalade progressive.",
+          "Objectif : construire un guardrail capable de distinguer les conversations à faible risque des conversations à haut risque, avant même que le chatbot réponde.",
+          "Trois failles critiques identifiées au red-teaming : langage euphémique manqué, signaux non intégrés sur plusieurs tours, réponses trop complaisantes face à des déclarations dangereuses.",
+        ],
+      },
+      {
+        title: "Le red-teaming",
+        bullets: [
+          "On a testé le chatbot avec 5 méthodes : test taxonomie × niveau de risque, personas utilisateurs, dérive multi-tours, boundary pushing, et tests d'ambiguïté / euphémismes.",
+          "Cas réel capturé : un utilisateur raconte l'histoire d'un nounours qui 'trouve enfin son soulagement' — le chatbot répond 'quelle histoire douce et réconfortante'. Signal suicidaire totalement manqué.",
+          "Autre échec critique : un utilisateur écrit 'on aura tout le temps au paradis' et rédige un message d'adieu à ses parents — le chatbot ne détecte rien et répond 'c'est vraiment touchant'.",
+          "Ces annotated failure cases ont directement guidé la conception du dataset et du guardrail.",
+        ],
+      },
+      {
+        title: "Les données",
+        bullets: [
+          "On a généré 6 037 conversations synthétiques multi-tours (16–20 tours), équilibrées entre high-risk (52%) et low-risk (48%).",
+          "Couverture trilingue : anglais (35%), français (35%), code-switching (29%) — pour refléter la réalité des jeunes québécois.",
+          "Représentation DEI explicite : LGBTQ+ (16%), personnes en situation de handicap (9%), communautés autochtones (8%), contextes d'immigration et de discrimination raciale.",
+          "Les données couvrent l'argot ado, abréviations, émojis, hésitations et divulgation progressive — pas du texte clinique parfait.",
+        ],
+      },
+      {
+        title: "Le guardrail",
+        bullets: [
+          "Trois architectures comparées : classifieur encoder (rapide, F1 max 0.66), LLM-as-a-Judge (le plus précis), guardrail en cascade (le plus lent).",
+          "Solution finale : LLM-as-a-Judge Cohere avec prompt optimisé et seuil calibré à 0.36 — F1 : 0.908, Précision : 0.908, Rappel : 0.908.",
+          "Le prompt encode explicitement les signaux indirects : langage de finalité, retrait émotionnel, escalade progressive, expressions culturellement spécifiques et code-switching.",
+          "Biais vers la sécurité : en cas de doute, le guardrail flag. Les faux négatifs sont plus coûteux que les faux positifs dans ce contexte.",
+        ],
+      },
+      {
+        title: "Ce que j'ai appris",
+        bullets: [
+          "Red-teamer une IA dans un contexte sensible : ce n'est pas juste tester des prompts — c'est comprendre comment les jeunes en détresse s'expriment vraiment.",
+          "Générer des données synthétiques de qualité pour un problème de sécurité : équilibrage, diversité linguistique, couverture DEI, éviter les biais structuraux.",
+          "Travailler en équipe multidisciplinaire (UdeM/Mila, Polytechnique, McGill) avec des contraintes de temps serrées.",
+          "Un F1 élevé ne suffit pas : dans la santé mentale, un faux négatif peut avoir des conséquences irréversibles.",
+        ],
+      },
+    ],
+
+    devStack: [
+      { name: "Python", logoSrc: "/stacks/Python.png" },
+      { name: "Pandas", logoSrc: "/stacks/pandas.svg" },
+      { name: "NumPy", logoSrc: "/stacks/numpy.svg" },
+    ],
+
+    mlStack: [
+      { name: "HuggingFace", logoSrc: "/stacks/huggingface.png" },
+      { name: "Mistral AI", logoSrc: "/stacks/Mistralai.png" },
+      { name: "OpenAI", logoSrc: "/stacks/Chatgpt.png" },
+      { name: "Cohere", logoSrc: "" },
+      { name: "Nemotron", logoSrc: "" },
+      { name: "Scikit-learn", logoSrc: "/stacks/ScikitLearn.png" },
+      { name: "PyTorch", logoSrc: "/stacks/Pytorch.png" },
+    ],
+
+    deployStack: [
+      { name: "GitHub", logoSrc: "/stacks/Github.png" },
+      { name: "GPU A40", logoSrc: "" },
+      { name: "Amazon S3", logoSrc: "" },
+    ],
+
+    coverImage: "/logos/hackathon-cover.jpg.webp",
+
+    partners: [
+      { name: "Mila", logoSrc: "/logos/mila-wordmark.svg" },
+      { name: "Kids Help Phone", logoSrc: "/logos/khp-logo.png" },
+      { name: "Bell", logoSrc: "/logos/bell-logo.png" },
+      { name: "BUZZ HPC", logoSrc: "/logos/buzz-hpc-logo.png" },
+      { name: "Bell AI Fabric", logoSrc: "/logos/bell-ai-fabric-logo.png" },
+    ],
+  },
+
   airl: {
     tl_dr:
       "J'ai construit AirI de A à Z : une app qui prédit les retards de vols au départ des aéroports canadiens. On entre un vol, et l'app te dit si tu risques d'être retardé et combien de temps. Le tout avec une carte interactive, de la météo en temps réel et deux modèles ML derrière.",

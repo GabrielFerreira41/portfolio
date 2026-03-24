@@ -54,14 +54,20 @@ export default function TechCluster({
               className="inline-flex items-center gap-2 rounded-full border border-udem-blue/15 bg-white/85 px-3 py-2 shadow-[0_6px_16px_rgba(11,17,58,0.06)] transition hover:border-udem-blue/35"
               style={variant === "cluster" ? offsetStyle(i) : undefined}
             >
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-udem-blue/15 bg-udem-mist">
-                <Image
-                  src={t.logoSrc}
-                  alt={`${t.name} logo`}
-                  width={24}
-                  height={24}
-                  className="h-5 w-5 object-contain"
-                />
+              <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-udem-blue/15 bg-udem-mist overflow-hidden">
+                {t.logoSrc ? (
+                  <Image
+                    src={t.logoSrc}
+                    alt={`${t.name} logo`}
+                    width={24}
+                    height={24}
+                    className="h-5 w-5 object-contain"
+                  />
+                ) : (
+                  <span className="text-[11px] font-bold text-udem-navy/60 leading-none select-none">
+                    {t.name.charAt(0).toUpperCase()}
+                  </span>
+                )}
               </span>
               <span className="text-sm font-medium text-udem-navy/80">
                 {t.name}

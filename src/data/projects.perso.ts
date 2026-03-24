@@ -39,13 +39,13 @@ export const projectsPerso: Project[] = [
   },
   {
     slug: "hackathon-mila-sante-mentale",
-    title: "Hackathon Mila — IA & santé mentale",
-    subtitle: "Prototype d’IA conversationnelle plus sûre pour la santé mentale des jeunes.",
+    title: "Hackathon Mila — Guardrail IA & santé mentale",
+    subtitle: "Système de détection de messages à haut risque pour un chatbot de soutien aux jeunes — F1 : 0.908.",
     description:
-      "Participation au hackathon Mila : cadrage du problème, prototypage, itérations rapides et travail en équipe multidisciplinaire.",
-    tags: ["Hackathon", "Mila", "AI Safety", "NLP", "Prototype"],
+      "Dans ce hackathon Mila autour de Kids Help Phone (KHP), mon équipe et moi avons red-teamé leur chatbot, généré 6 037 conversations synthétiques bilingues et comparé trois architectures de guardrail. Solution finale : LLM-as-a-Judge (Cohere) avec seuil calibré à 0.36.",
+    tags: ["AI Safety", "LLM", "NLP", "Guardrail", "Python", "Hackathon"],
     year: "2026",
-    impact: "Prototype + apprentissages sur sécurité/fiabilité, UX et collaboration.",
-    links: [{ label: "Résumé", href: "#" }],
+    impact: "LLM-as-a-Judge → F1 : 0.908 sur 6 037 conversations bilingues (EN/FR/mix).",
+    links: [{ label: "Rapport PDF", href: "/hackathon-mila-rapport.pdf" }],
   },
 ];
